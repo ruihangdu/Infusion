@@ -21,7 +21,7 @@ const ConfirmButton: React.FC<ConfirmButtonProps> = ({
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-10">
+    <div className="sticky bottom-6 flex justify-end mt-6 mb-4">
       <Button
         className="confirm-button px-6 py-6 rounded-full font-medium shadow-lg flex items-center"
         disabled={selectedCount === 0}

@@ -47,10 +47,15 @@ export type Influencer = {
   name: string;
   category: string;
   followers: number;
+  formattedFollowers: string;
   engagement: number;
   ctr: number;
   image: string;
   platforms: Platform[];
+  platformColors: string[];
   audienceSize: AudienceSize;
+  sizeBgColor: string;
+  sizeTextColor: string;
   lastCampaign: number;
+  ctrColor: string;
 };

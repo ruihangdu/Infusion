@@ -10,10 +10,10 @@ const CampaignHeader: React.FC = () => {
             <div className="text-primary text-3xl mr-2">
               <UserSearch className="h-8 w-8" />
             </div>
-            <h1 className="text-xl font-semibold text-slate-800">InfluencerMatch</h1>
+            <h1 className="text-xl font-semibold text-slate-800">Infusion</h1>
           </div>
           <div className="flex items-center space-x-4">
-            <span className="text-sm text-slate-500">Campaign: Summer Collection 2023</span>
+            <span className="text-sm text-slate-500">Campaign: Vietnamese Market 2023</span>
             <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center">
               <span className="text-sm font-medium">BC</span>
             </div>

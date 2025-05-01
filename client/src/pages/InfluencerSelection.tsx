@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import CampaignHeader from "@/components/CampaignHeader";
-import FilterBar from "@/components/FilterBar";
 import InfluencerCard from "@/components/InfluencerCard";
 import SelectionCounter from "@/components/SelectionCounter";
 import ConfirmButton from "@/components/ConfirmButton";
@@ -8,7 +7,7 @@ import PaginationControls from "@/components/PaginationControls";
 import { Badge } from "@/components/ui/badge";
 import { useInfluencerSelection } from "@/hooks/useInfluencerSelection";
 import { influencers } from "@/data/influencers";
-import { Hash, Users, Instagram, Twitter } from "lucide-react";
+import { Hash, Users, Instagram, Zap } from "lucide-react";
 
 const InfluencerSelection: React.FC = () => {
   const {
@@ -18,25 +17,23 @@ const InfluencerSelection: React.FC = () => {
     isSelected
   } = useInfluencerSelection();
 
-  const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
+  const [campaignBrief, setCampaignBrief] = useState<string>("");
 
-  const filteredInfluencers = influencers.filter(
-    (influencer) =>
-      influencer.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      influencer.category.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  const paginatedInfluencers = filteredInfluencers.slice(
+  // Get all influencers, no filtering required
+  const paginatedInfluencers = influencers.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
   useEffect(() => {
-    // Reset to first page when search query changes
-    setCurrentPage(1);
-  }, [searchQuery]);
+    // Retrieve the campaign brief from session storage
+    const brief = sessionStorage.getItem("campaignBrief");
+    if (brief) {
+      setCampaignBrief(brief);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -45,14 +42,22 @@ const InfluencerSelection: React.FC = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-slate-800 mb-2">
-            Recommended Influencers
+            Recommended Vietnamese Influencers
           </h2>
           <p className="text-slate-600">
             We've matched these influencers to your campaign brief. Select the ones you're interested in working with.
           </p>
+          
+          {campaignBrief && (
+            <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-100">
+              <h3 className="font-medium text-slate-800 mb-2">Your Campaign Brief:</h3>
+              <p className="text-slate-600 text-sm italic">{campaignBrief}</p>
+            </div>
+          )}
+          
           <div className="mt-4 flex flex-wrap gap-2">
             <Badge variant="outline" className="bg-slate-100 text-slate-800 hover:bg-slate-200">
-              <Hash className="mr-1 h-3 w-3" /> Fashion
+              <Hash className="mr-1 h-3 w-3" /> Vietnamese Market
             </Badge>
             <Badge variant="outline" className="bg-slate-100 text-slate-800 hover:bg-slate-200">
               <Users className="mr-1 h-3 w-3" /> Gen Z
@@ -61,12 +66,10 @@ const InfluencerSelection: React.FC = () => {
               <Instagram className="mr-1 h-3 w-3" /> Instagram
             </Badge>
             <Badge variant="outline" className="bg-slate-100 text-slate-800 hover:bg-slate-200">
-              <Twitter className="mr-1 h-3 w-3" /> TikTok
+              <Zap className="mr-1 h-3 w-3" /> TikTok
             </Badge>
           </div>
         </div>
-
-        <FilterBar onSearch={setSearchQuery} />
 
         <SelectionCounter
           count={selectedIds.length}
@@ -84,18 +87,18 @@ const InfluencerSelection: React.FC = () => {
           ))}
         </div>
 
+        <ConfirmButton
+          selectedCount={selectedIds.length}
+          selectedIds={selectedIds}
+        />
+
         <PaginationControls
-          totalItems={filteredInfluencers.length}
+          totalItems={influencers.length}
           itemsPerPage={itemsPerPage}
           currentPage={currentPage}
           onPageChange={setCurrentPage}
         />
       </main>
-
-      <ConfirmButton
-        selectedCount={selectedIds.length}
-        selectedIds={selectedIds}
-      />
     </div>
   );
 };

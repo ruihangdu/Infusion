@@ -82,7 +82,7 @@ const Waitlist: React.FC = () => {
             <Mail className="h-12 w-12 mx-auto" />
           </div>
           <h2 className="text-2xl font-bold">Coming Soon</h2>
-          <p className="text-blue-100">Our influencer collaboration platform is almost ready</p>
+          <p className="text-blue-100">Our Vietnamese influencer platform is launching soon</p>
         </div>
         <div className="p-6">
           <p className="text-slate-600 mb-6">

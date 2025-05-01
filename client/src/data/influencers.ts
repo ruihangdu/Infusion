@@ -11,18 +11,18 @@ const getRandomFloat = (min: number, max: number, decimals: number = 1): number 
 
 const generateInfluencerData = (): Influencer[] => {
   const names = [
-    "Sophia J.", "Alex R.", "Mia C.", "Jasmine T.", "Marcus J.",
-    "Daniel P.", "Olivia G.", "Noah C.", "Emma S.", "Liam T.",
-    "Ava B.", "Mason L.", "Zoe K.", "Ethan W.", "Lily R.",
-    "Lucas H.", "Harper M.", "Jackson P.", "Aria C.", "Elijah D."
+    "Minh Ngọc", "Quang Đại", "Thu Trang", "Hải Triều", "Kim Ngân",
+    "Hoàng Hiệp", "Thùy Dung", "Đức Phúc", "Quỳnh Anh", "Việt Hoàng",
+    "Thanh Hằng", "Trung Kiên", "Hoài Thương", "Mạnh Cường", "Hà Mi",
+    "Trọng Hiếu", "Lan Phương", "Minh Tuấn", "Ngọc Trinh", "Hoàng Sơn"
   ];
 
   const categories = [
-    "Fashion & Lifestyle", "Streetwear & Culture", "Beauty & Wellness", "Summer Fashion",
-    "Active & Streetwear", "Fashion & Travel", "Sustainable Fashion", "Men's Lifestyle",
-    "Women's Fashion", "Fitness & Health", "Luxury Fashion", "Vintage Style",
-    "Minimalist Style", "Athleisure", "Festival Fashion", "Eco-Friendly Fashion",
-    "Fashion Tech", "Accessories & Jewelry", "Street Style", "Urban Fashion"
+    "Fashion & Lifestyle", "Streetwear & Culture", "Beauty & Wellness", "Vietnamese Food",
+    "Active & Streetwear", "Travel Vietnam", "Sustainable Living", "Vietnamese Cuisine",
+    "Contemporary Fashion", "Fitness & Health", "Luxury Lifestyle", "Vietnamese Culture",
+    "Minimalist Style", "Hanoi Street Style", "Vietnamese Coffee", "Local Creators",
+    "Tech Reviews", "Accessories & Jewelry", "Street Food", "Urban Vietnam"
   ];
 
   const platforms: Platform[] = ["Instagram", "TikTok", "YouTube", "Spotify", "Twitter"];
