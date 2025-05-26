@@ -95,7 +95,7 @@ const generateInfluencerData = (): Influencer[] => {
     {
       name: "Hà Linh",
       category: "Beauty & Makeup",
-      image: "/src/images/ha_linh.jpg",
+      image: `/images/ha_linh.jpg`,
       platforms: ["Instagram", "TikTok"],
       audienceSize: "Macro",
       engagementRange: [4.5, 7.0],
@@ -105,7 +105,7 @@ const generateInfluencerData = (): Influencer[] => {
     {
       name: "Minh Tuấn",
       category: "Travel & Adventure",
-      image: "/src/images/minh_tuan.jpg",
+      image: `/images/minh_tuan.jpg`,
       platforms: ["Instagram", "YouTube"],
       audienceSize: "Mega",
       engagementRange: [3.5, 6.0],
@@ -115,7 +115,7 @@ const generateInfluencerData = (): Influencer[] => {
     {
       name: "Ngọc Anh",
       category: "Fashion & Lifestyle",
-      image: "/src/images/ngoc_anh.jpg",
+      image: `/images/ngoc_anh.jpg`,
       platforms: ["Instagram", "TikTok"],
       audienceSize: "Mid-tier",
       engagementRange: [4.0, 7.0],
@@ -125,7 +125,7 @@ const generateInfluencerData = (): Influencer[] => {
     {
       name: "Đức Hải",
       category: "Food Blogger",
-      image: "/src/images/duc_hai.jpg",
+      image: `/images/duc_hai.jpg`,
       platforms: ["YouTube", "TikTok"],
       audienceSize: "Macro",
       engagementRange: [3.0, 6.0],
@@ -135,7 +135,7 @@ const generateInfluencerData = (): Influencer[] => {
     {
       name: "Thảo Vy",
       category: "Fitness & Wellness",
-      image: "/src/images/thao_vy.jpg",
+      image: `/images/thao_vy.jpg`,
       platforms: ["Instagram", "YouTube"],
       audienceSize: "Mid-tier",
       engagementRange: [4.5, 7.0],
@@ -145,7 +145,7 @@ const generateInfluencerData = (): Influencer[] => {
     {
       name: "Lan Chi",
       category: "Art & Illustration",
-      image: "/src/images/lan_chi.jpg",
+      image: `/images/lan_chi.jpg`,
       platforms: ["Instagram", "Twitter"],
       audienceSize: "Micro",
       engagementRange: [4.0, 7.0],
@@ -155,7 +155,7 @@ const generateInfluencerData = (): Influencer[] => {
     {
       name: "Bích Ngọc",
       category: "Skincare & Self-Care",
-      image: "/src/images/bich_ngoc.jpg",
+      image: `/images/bich_ngoc.jpg`,
       platforms: ["Instagram", "TikTok"],
       audienceSize: "Mid-tier",
       engagementRange: [4.0, 7.0],
