@@ -91,20 +91,20 @@ const generateInfluencerData = (): Influencer[] => {
       category: "Beauty & Makeup",
       image: `/images/ha_linh.jpg`,
       platforms: ["Instagram", "TikTok"],
-      audienceSize: "Macro",
-      engagementRange: [5.0, 7.0],
-      ctrRange: [3.0, 5.0],
-      ctrColor: "bg-green-500"
+      audienceSize: "Micro",
+      engagementRange: [4.0, 6.0],
+      ctrRange: [5.0, 7.0],
+      // ctrColor: "bg-green-500"
     },
     {
       name: "Minh Tuấn",
       category: "Travel & Adventure",
       image: `/images/minh_tuan.jpg`,
       platforms: ["Instagram", "YouTube"],
-      audienceSize: "Macro",
-      engagementRange: [5.0, 7.0],
-      ctrRange: [3.0, 5.0],
-      ctrColor: "bg-green-500"
+      audienceSize: "Micro",
+      engagementRange: [4.0, 6.0],
+      ctrRange: [5.0, 7.0],
+      // ctrColor: "bg-green-500"
     },
     {
       name: "Ngọc Anh",
@@ -114,17 +114,17 @@ const generateInfluencerData = (): Influencer[] => {
       audienceSize: "Micro",
       engagementRange: [4.0, 6.0],
       ctrRange: [5.0, 7.0],
-      ctrColor: "bg-yellow-500"
+      // ctrColor: "bg-yellow-500"
     },
     {
       name: "Đức Hải",
       category: "Food Blogger",
       image: `/images/duc_hai.jpg`,
       platforms: ["YouTube", "TikTok"],
-      audienceSize: "Macro",
-      engagementRange: [5.0, 8.0],
-      ctrRange: [3.0, 5.0],
-      ctrColor: "bg-orange-500"
+      audienceSize: "Micro",
+      engagementRange: [4.0, 6.0],
+      ctrRange: [5.0, 7.0],
+      // ctrColor: "bg-orange-500"
     },
     {
       name: "Thảo Vy",
@@ -132,9 +132,9 @@ const generateInfluencerData = (): Influencer[] => {
       image: `/images/thao_vy.jpg`,
       platforms: ["Instagram", "YouTube"],
       audienceSize: "Micro",
-      engagementRange: [4.5, 6.0],
-      ctrRange: [5.0, 8.0],
-      ctrColor: "bg-green-500"
+      engagementRange: [4.0, 6.0],
+      ctrRange: [5.0, 7.0],
+      // ctrColor: "bg-green-500"
     },
     {
       name: "Lan Chi",
@@ -144,7 +144,7 @@ const generateInfluencerData = (): Influencer[] => {
       audienceSize: "Micro",
       engagementRange: [4.0, 6.0],
       ctrRange: [5.0, 7.0],
-      ctrColor: "bg-yellow-500"
+      // ctrColor: "bg-yellow-500"
     },
     {
       name: "Bích Ngọc",
@@ -153,8 +153,8 @@ const generateInfluencerData = (): Influencer[] => {
       platforms: ["Instagram", "TikTok"],
       audienceSize: "Micro",
       engagementRange: [4.0, 6.0],
-      ctrRange: [6.0, 8.0],
-      ctrColor: "bg-green-500"
+      ctrRange: [5.0, 7.0],
+      // ctrColor: "bg-green-500"
     }
   ];
 
@@ -178,7 +178,7 @@ const generateInfluencerData = (): Influencer[] => {
       sizeBgColor: sizeBgColors[profile.audienceSize as AudienceSize],
       sizeTextColor: sizeTextColors[profile.audienceSize as AudienceSize],
       lastCampaign: getRandomInt(1, 10),
-      ctrColor: profile.ctrColor
+      ctrColor: ctr >= 7 ? "bg-green-500" : ctr >= 5.5 ? "bg-yellow-500" : "bg-orange-500"
     };
   });
 
@@ -201,8 +201,8 @@ const generateInfluencerData = (): Influencer[] => {
     ];
     
     const followers = getFollowerCount(audienceSize);
-    const engagement = getRandomFloat(2.5, 6.5, 1);
-    const ctr = getRandomFloat(4.5, 9.5, 1);
+    const engagement = getRandomFloat(4.0, 6.0, 1);
+    const ctr = getRandomFloat(5.0, 7.0, 1);
     
     return {
       id: index + 1,
