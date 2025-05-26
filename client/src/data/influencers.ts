@@ -90,7 +90,106 @@ const generateInfluencerData = (): Influencer[] => {
     }
   };
 
-  return Array.from({ length: 20 }, (_, index) => {
+  // --- Custom influencer profiles ---
+  const customProfiles = [
+    {
+      name: "Hà Linh",
+      category: "Beauty & Makeup",
+      image: "/src/images/ha_linh.jpg",
+      platforms: ["Instagram", "TikTok"],
+      audienceSize: "Macro",
+      engagementRange: [4.5, 7.0],
+      ctrRange: [5.5, 9.0],
+      ctrColor: "bg-green-500"
+    },
+    {
+      name: "Minh Tuấn",
+      category: "Travel & Adventure",
+      image: "/src/images/minh_tuan.jpg",
+      platforms: ["Instagram", "YouTube"],
+      audienceSize: "Mega",
+      engagementRange: [3.5, 6.0],
+      ctrRange: [5.0, 8.0],
+      ctrColor: "bg-green-500"
+    },
+    {
+      name: "Ngọc Anh",
+      category: "Fashion & Lifestyle",
+      image: "/src/images/ngoc_anh.jpg",
+      platforms: ["Instagram", "TikTok"],
+      audienceSize: "Mid-tier",
+      engagementRange: [4.0, 7.0],
+      ctrRange: [5.0, 8.0],
+      ctrColor: "bg-yellow-500"
+    },
+    {
+      name: "Đức Hải",
+      category: "Food Blogger",
+      image: "/src/images/duc_hai.jpg",
+      platforms: ["YouTube", "TikTok"],
+      audienceSize: "Macro",
+      engagementRange: [3.0, 6.0],
+      ctrRange: [4.5, 7.0],
+      ctrColor: "bg-orange-500"
+    },
+    {
+      name: "Thảo Vy",
+      category: "Fitness & Wellness",
+      image: "/src/images/thao_vy.jpg",
+      platforms: ["Instagram", "YouTube"],
+      audienceSize: "Mid-tier",
+      engagementRange: [4.5, 7.0],
+      ctrRange: [5.0, 8.0],
+      ctrColor: "bg-green-500"
+    },
+    {
+      name: "Lan Chi",
+      category: "Art & Illustration",
+      image: "/src/images/lan_chi.jpg",
+      platforms: ["Instagram", "Twitter"],
+      audienceSize: "Micro",
+      engagementRange: [4.0, 7.0],
+      ctrRange: [4.5, 7.0],
+      ctrColor: "bg-yellow-500"
+    },
+    {
+      name: "Bích Ngọc",
+      category: "Skincare & Self-Care",
+      image: "/src/images/bich_ngoc.jpg",
+      platforms: ["Instagram", "TikTok"],
+      audienceSize: "Mid-tier",
+      engagementRange: [4.0, 7.0],
+      ctrRange: [5.0, 8.0],
+      ctrColor: "bg-green-500"
+    }
+  ];
+
+  // Generate custom influencer objects
+  const customInfluencers = customProfiles.map((profile, idx) => {
+    const followers = getFollowerCount(profile.audienceSize as AudienceSize);
+    const engagement = getRandomFloat(profile.engagementRange[0], profile.engagementRange[1], 1);
+    const ctr = getRandomFloat(profile.ctrRange[0], profile.ctrRange[1], 1);
+    return {
+      id: idx + 1,
+      name: profile.name,
+      category: profile.category,
+      followers,
+      formattedFollowers: formatFollowerCount(followers),
+      engagement,
+      ctr,
+      image: profile.image,
+      platforms: profile.platforms as Platform[],
+      platformColors: (profile.platforms as Platform[]).map(p => platformColors[p]),
+      audienceSize: profile.audienceSize as AudienceSize,
+      sizeBgColor: sizeBgColors[profile.audienceSize as AudienceSize],
+      sizeTextColor: sizeTextColors[profile.audienceSize as AudienceSize],
+      lastCampaign: getRandomInt(1, 10),
+      ctrColor: profile.ctrColor
+    };
+  });
+
+  // Generate the rest of the influencers
+  const generated = Array.from({ length: 20 }, (_, index) => {
     const platformCount = getRandomInt(1, 2);
     const selectedPlatforms: Platform[] = [];
     
@@ -129,6 +228,11 @@ const generateInfluencerData = (): Influencer[] => {
       ctrColor: ctr >= 7 ? "bg-green-500" : ctr >= 5.5 ? "bg-yellow-500" : "bg-orange-500"
     };
   });
+
+  return [...customInfluencers, ...generated];
 };
 
-export const influencers = generateInfluencerData();
+// Generate the main influencer list
+const influencers = generateInfluencerData();
+
+export default influencers;
