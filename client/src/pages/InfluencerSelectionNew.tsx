@@ -7,7 +7,6 @@ import PaginationControls from "@/components/PaginationControls";
 import { useInfluencerSelection } from "@/hooks/useInfluencerSelection";
 import { influencers } from "@/data/influencers";
 import { ChevronUp, ChevronDown } from "lucide-react";
-import { useI18n } from "@/lib/i18n";
 
 const InfluencerSelection: React.FC = () => {
   const {
@@ -16,7 +15,6 @@ const InfluencerSelection: React.FC = () => {
     clearSelection,
     isSelected
   } = useInfluencerSelection();
-  const { t } = useI18n();
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -40,30 +38,32 @@ const InfluencerSelection: React.FC = () => {
   return (
     <div className="min-h-screen">
       <CampaignHeader />
+
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-slate-800 mb-2">
-            {t("featuresTitle")}
+            Recommended Vietnamese Influencers
           </h2>
           <p className="text-slate-600">
-            {t("featuresSubtitle")}
+            We've matched these influencers to your campaign brief. Select the ones you're interested in working with.
           </p>
+          
           {campaignBrief && (
             <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-100">
               <div className="flex justify-between items-center mb-2">
-                <h3 className="font-medium text-slate-800">{t("problemTitle")}</h3>
+                <h3 className="font-medium text-slate-800">Your Campaign Brief:</h3>
                 <button 
                   onClick={() => setCampaignBriefVisible(prev => !prev)}
                   className="text-blue-600 hover:text-blue-800 text-sm flex items-center"
                 >
                   {campaignBriefVisible ? (
                     <>
-                      <span className="mr-1">{t("navFeaturesMobile")}</span>
+                      <span className="mr-1">Collapse</span>
                       <ChevronUp className="h-4 w-4" />
                     </>
                   ) : (
                     <>
-                      <span className="mr-1">{t("navJoinWaitlistMobile")}</span>
+                      <span className="mr-1">Expand</span>
                       <ChevronDown className="h-4 w-4" />
                     </>
                   )}

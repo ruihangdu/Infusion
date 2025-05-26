@@ -38,7 +38,7 @@ export type WaitlistEntry = typeof waitlistEntries.$inferSelect;
 // Types for frontend
 export type Platform = "Instagram" | "TikTok" | "YouTube" | "Spotify" | "Twitter";
 
-export type AudienceSize = "Micro" | "Macro";
+export type AudienceSize = "Micro" | "Mid-tier" | "Macro" | "Mega";
 
 export type Category = "Fashion" | "Beauty" | "Lifestyle" | "Travel" | "Fitness" | "Food" | "Tech" | "Music";
 

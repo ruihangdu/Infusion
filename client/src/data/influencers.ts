@@ -26,7 +26,7 @@ const generateInfluencerData = (): Influencer[] => {
   ];
 
   const platforms: Platform[] = ["Instagram", "TikTok", "YouTube", "Spotify", "Twitter"];
-  const audienceSizes: AudienceSize[] = ["Micro", "Macro"];
+  const audienceSizes: AudienceSize[] = ["Micro", "Mid-tier", "Macro", "Mega"];
 
   const platformColors: Record<Platform, string> = {
     "Instagram": "bg-blue-500",
@@ -38,12 +38,16 @@ const generateInfluencerData = (): Influencer[] => {
 
   const sizeBgColors: Record<AudienceSize, string> = {
     "Micro": "bg-green-50",
-    "Macro": "bg-orange-50"
+    "Mid-tier": "bg-indigo-50",
+    "Macro": "bg-orange-50",
+    "Mega": "bg-purple-50"
   };
 
   const sizeTextColors: Record<AudienceSize, string> = {
     "Micro": "text-green-700",
-    "Macro": "text-orange-700"
+    "Mid-tier": "text-indigo-700",
+    "Macro": "text-orange-700",
+    "Mega": "text-purple-700"
   };
 
   const images = [
@@ -71,8 +75,10 @@ const generateInfluencerData = (): Influencer[] => {
 
   const getFollowerCount = (size: AudienceSize): number => {
     switch (size) {
-      case "Micro": return getRandomInt(10, 100) * 1000;
-      case "Macro": return getRandomInt(100, 1000) * 1000;
+      case "Micro": return getRandomInt(10, 50) * 1000;
+      case "Mid-tier": return getRandomInt(50, 500) * 1000;
+      case "Macro": return getRandomInt(500, 1000) * 1000;
+      case "Mega": return getRandomInt(1000, 5000) * 1000;
     }
   };
 
@@ -92,8 +98,8 @@ const generateInfluencerData = (): Influencer[] => {
       image: `/images/ha_linh.jpg`,
       platforms: ["Instagram", "TikTok"],
       audienceSize: "Macro",
-      engagementRange: [5.0, 7.0],
-      ctrRange: [3.0, 5.0],
+      engagementRange: [4.5, 7.0],
+      ctrRange: [5.5, 9.0],
       ctrColor: "bg-green-500"
     },
     {
@@ -101,9 +107,9 @@ const generateInfluencerData = (): Influencer[] => {
       category: "Travel & Adventure",
       image: `/images/minh_tuan.jpg`,
       platforms: ["Instagram", "YouTube"],
-      audienceSize: "Macro",
-      engagementRange: [5.0, 7.0],
-      ctrRange: [3.0, 5.0],
+      audienceSize: "Mega",
+      engagementRange: [3.5, 6.0],
+      ctrRange: [5.0, 8.0],
       ctrColor: "bg-green-500"
     },
     {
@@ -111,9 +117,9 @@ const generateInfluencerData = (): Influencer[] => {
       category: "Fashion & Lifestyle",
       image: `/images/ngoc_anh.jpg`,
       platforms: ["Instagram", "TikTok"],
-      audienceSize: "Micro",
-      engagementRange: [4.0, 6.0],
-      ctrRange: [5.0, 7.0],
+      audienceSize: "Mid-tier",
+      engagementRange: [4.0, 7.0],
+      ctrRange: [5.0, 8.0],
       ctrColor: "bg-yellow-500"
     },
     {
@@ -122,8 +128,8 @@ const generateInfluencerData = (): Influencer[] => {
       image: `/images/duc_hai.jpg`,
       platforms: ["YouTube", "TikTok"],
       audienceSize: "Macro",
-      engagementRange: [5.0, 8.0],
-      ctrRange: [4.5, 6.0],
+      engagementRange: [3.0, 6.0],
+      ctrRange: [4.5, 7.0],
       ctrColor: "bg-orange-500"
     },
     {
@@ -131,8 +137,8 @@ const generateInfluencerData = (): Influencer[] => {
       category: "Fitness & Wellness",
       image: `/images/thao_vy.jpg`,
       platforms: ["Instagram", "YouTube"],
-      audienceSize: "Micro",
-      engagementRange: [4.5, 6.0],
+      audienceSize: "Mid-tier",
+      engagementRange: [4.5, 7.0],
       ctrRange: [5.0, 8.0],
       ctrColor: "bg-green-500"
     },
@@ -142,8 +148,8 @@ const generateInfluencerData = (): Influencer[] => {
       image: `/images/lan_chi.jpg`,
       platforms: ["Instagram", "Twitter"],
       audienceSize: "Micro",
-      engagementRange: [4.0, 6.0],
-      ctrRange: [5.0, 7.0],
+      engagementRange: [4.0, 7.0],
+      ctrRange: [4.5, 7.0],
       ctrColor: "bg-yellow-500"
     },
     {
@@ -151,9 +157,9 @@ const generateInfluencerData = (): Influencer[] => {
       category: "Skincare & Self-Care",
       image: `/images/bich_ngoc.jpg`,
       platforms: ["Instagram", "TikTok"],
-      audienceSize: "Micro",
-      engagementRange: [4.0, 6.0],
-      ctrRange: [6.0, 8.0],
+      audienceSize: "Mid-tier",
+      engagementRange: [4.0, 7.0],
+      ctrRange: [5.0, 8.0],
       ctrColor: "bg-green-500"
     }
   ];
