@@ -232,7 +232,4 @@ const generateInfluencerData = (): Influencer[] => {
   return [...customInfluencers, ...generated];
 };
 
-// Generate the main influencer list
-const influencers = generateInfluencerData();
-
-export default influencers;
+export const influencers = generateInfluencerData();
