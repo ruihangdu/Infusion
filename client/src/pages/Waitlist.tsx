@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { apiRequest } from "@/lib/queryClient";
 import { insertWaitlistEntrySchema } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
+import { useI18n } from "@/lib/i18n";
 
 const waitlistSchema = insertWaitlistEntrySchema.extend({
   name: z.string().min(1, "Name is required"),
@@ -23,6 +24,7 @@ type WaitlistFormValues = z.infer<typeof waitlistSchema>;
 const Waitlist: React.FC = () => {
   const [, navigate] = useLocation();
   const { toast } = useToast();
+  const { t } = useI18n();
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
 
   useEffect(() => {
@@ -81,14 +83,11 @@ const Waitlist: React.FC = () => {
           <div className="text-4xl mb-2">
             <Mail className="h-12 w-12 mx-auto" />
           </div>
-          <h2 className="text-2xl font-bold">Coming Soon</h2>
-          <p className="text-blue-100">Our Vietnamese influencer platform is launching soon</p>
+          <h2 className="text-2xl font-bold">{t("ctaTitle")}</h2>
+          <p className="text-blue-100">{t("ctaSubtitle")}</p>
         </div>
         <div className="p-6">
-          <p className="text-slate-600 mb-6">
-            Thank you for your interest! Join our waitlist to be the first to know when we launch and get exclusive early access.
-          </p>
-
+          <p className="text-slate-600 mb-6">{t("ctaPrivacy")}</p>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
@@ -96,9 +95,9 @@ const Waitlist: React.FC = () => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Your Name</FormLabel>
+                    <FormLabel>{t("srEmailAddress")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your full name" {...field} />
+                      <Input placeholder={t("placeholderEmail") + " (Name)"} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -109,9 +108,9 @@ const Waitlist: React.FC = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email Address</FormLabel>
+                    <FormLabel>{t("srEmailAddress")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="you@company.com" {...field} />
+                      <Input placeholder={t("placeholderEmail") + " (Email)"} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -122,9 +121,9 @@ const Waitlist: React.FC = () => {
                 name="company"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Company Name</FormLabel>
+                    <FormLabel>{t("footerPrivacy")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Your company" {...field} />
+                      <Input placeholder={t("footerPrivacy") + " (Company)"} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -135,18 +134,17 @@ const Waitlist: React.FC = () => {
                 className="w-full"
                 disabled={mutation.isPending}
               >
-                {mutation.isPending ? "Submitting..." : "Join Waitlist"}
+                {mutation.isPending ? t("ctaButton") + "..." : t("ctaButton")}
               </Button>
             </form>
           </Form>
-
           <div className="mt-6 text-center">
             <Button
               variant="link"
               className="text-primary hover:text-blue-700 text-sm font-medium"
               onClick={handleBackClick}
             >
-              ← Back to influencer selection
+              ← {t("navFeatures")}
             </Button>
           </div>
         </div>

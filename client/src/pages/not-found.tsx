@@ -1,7 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 export default function NotFound() {
+  const { t } = useI18n();
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
       <Card className="w-full max-w-md mx-4">
@@ -12,7 +14,7 @@ export default function NotFound() {
           </div>
 
           <p className="mt-4 text-sm text-gray-600">
-            Did you forget to add the page to the router?
+            {t("problemSubtitle")}
           </p>
         </CardContent>
       </Card>
