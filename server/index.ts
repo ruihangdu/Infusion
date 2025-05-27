@@ -76,8 +76,7 @@ app.use("/images", express.static(path.join(__dirname, "../client/src/images"), 
   const port = 5000;
   server.listen({
     port,
-    host: "127.0.0.1", // or "localhost"
-    // reusePort: true, // remove or comment out this line
+    host: "127.0.0.1",
   }, () => {
     log(`serving on port ${port}`);
   });
