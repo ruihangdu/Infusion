@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -7,6 +8,7 @@ import Landing from "@/pages/Landing";
 import InfluencerSelection from "@/pages/InfluencerSelectionNew";
 import Waitlist from "@/pages/Waitlist";
 import NotFound from "@/pages/not-found";
+import { LanguageContext } from "@/components/CampaignHeader";
 
 function Router() {
   return (
@@ -20,13 +22,17 @@ function Router() {
 }
 
 function App() {
+  const [lang, setLang] = useState<'en' | 'vi'>('en');
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <LanguageContext.Provider value={{ lang, setLang }}>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </LanguageContext.Provider>
   );
 }
 

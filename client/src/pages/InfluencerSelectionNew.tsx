@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import CampaignHeader from "@/components/CampaignHeader";
+import React, { useState, useEffect, useContext } from "react";
+import CampaignHeader, { LanguageContext } from "@/components/CampaignHeader";
 import InfluencerCard from "@/components/InfluencerCard";
 import SelectionCounter from "@/components/SelectionCounter";
 import ConfirmButton from "@/components/ConfirmButton";
@@ -8,6 +8,23 @@ import { useInfluencerSelection } from "@/hooks/useInfluencerSelection";
 import { influencers } from "@/data/influencers";
 import { ChevronUp, ChevronDown } from "lucide-react";
 
+const translations = {
+  en: {
+    recommended: "Recommended Vietnamese Influencers",
+    matched: "We've matched these influencers to your campaign brief. Select the ones you're interested in working with.",
+    yourBrief: "Your Campaign Brief:",
+    collapse: "Collapse",
+    expand: "Expand"
+  },
+  vi: {
+    recommended: "Đề xuất Influencer Việt Nam",
+    matched: "Chúng tôi đã ghép các influencer này với bản tóm tắt chiến dịch của bạn. Hãy chọn những người bạn muốn hợp tác.",
+    yourBrief: "Tóm tắt chiến dịch của bạn:",
+    collapse: "Thu gọn",
+    expand: "Mở rộng"
+  }
+};
+
 const InfluencerSelection: React.FC = () => {
   const {
     selectedIds,
@@ -15,6 +32,8 @@ const InfluencerSelection: React.FC = () => {
     clearSelection,
     isSelected
   } = useInfluencerSelection();
+
+  const { lang } = useContext(LanguageContext);
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -42,28 +61,28 @@ const InfluencerSelection: React.FC = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-slate-800 mb-2">
-            Recommended Vietnamese Influencers
+            {translations[lang].recommended}
           </h2>
           <p className="text-slate-600">
-            We've matched these influencers to your campaign brief. Select the ones you're interested in working with.
+            {translations[lang].matched}
           </p>
           
           {campaignBrief && (
             <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-100">
               <div className="flex justify-between items-center mb-2">
-                <h3 className="font-medium text-slate-800">Your Campaign Brief:</h3>
+                <h3 className="font-medium text-slate-800">{translations[lang].yourBrief}</h3>
                 <button 
                   onClick={() => setCampaignBriefVisible(prev => !prev)}
                   className="text-blue-600 hover:text-blue-800 text-sm flex items-center"
                 >
                   {campaignBriefVisible ? (
                     <>
-                      <span className="mr-1">Collapse</span>
+                      <span className="mr-1">{translations[lang].collapse}</span>
                       <ChevronUp className="h-4 w-4" />
                     </>
                   ) : (
                     <>
-                      <span className="mr-1">Expand</span>
+                      <span className="mr-1">{translations[lang].expand}</span>
                       <ChevronDown className="h-4 w-4" />
                     </>
                   )}

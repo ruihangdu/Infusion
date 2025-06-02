@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useLocation } from "wouter";
+import { LanguageContext } from "@/components/CampaignHeader";
 
 interface ConfirmButtonProps {
   selectedCount: number;
   selectedIds: number[];
 }
 
+const translations = {
+  en: "Confirm Selection",
+  vi: "Xác nhận lựa chọn"
+};
+
 const ConfirmButton: React.FC<ConfirmButtonProps> = ({ 
   selectedCount, 
   selectedIds 
 }) => {
   const [, navigate] = useLocation();
+  const { lang } = useContext(LanguageContext) ?? { lang: 'en' };
 
   const handleConfirm = () => {
     // Store the selected IDs in session storage to retrieve on the waitlist page
@@ -27,7 +34,7 @@ const ConfirmButton: React.FC<ConfirmButtonProps> = ({
         disabled={selectedCount === 0}
         onClick={handleConfirm}
       >
-        <span>Confirm Selection</span>
+        <span>{translations[lang]}</span>
         <ArrowRight className="ml-2 h-5 w-5" />
       </Button>
     </div>
