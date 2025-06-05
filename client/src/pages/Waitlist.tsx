@@ -75,14 +75,14 @@ const Waitlist: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-      <div className="max-w-lg w-full bg-white rounded-xl shadow-lg overflow-hidden">
-        <div className="bg-primary p-6 text-white text-center">
-          <div className="text-4xl mb-2">
+    <div className="min-h-screen flex items-center justify-center bg-white px-4">
+      <div className="max-w-lg w-full bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200">
+        <div className="bg-white border-b border-slate-200 p-6 text-center">
+          <div className="text-4xl mb-2 text-indigo-600">
             <Mail className="h-12 w-12 mx-auto" />
           </div>
-          <h2 className="text-2xl font-bold">Coming Soon</h2>
-          <p className="text-blue-100">Our Vietnamese influencer platform is launching soon</p>
+          <h2 className="text-2xl font-bold text-indigo-600">Coming Soon</h2>
+          <p className="text-slate-500">Our AI video generation feature is launching soon</p>
         </div>
         <div className="p-6">
           <p className="text-slate-600 mb-6">
@@ -132,7 +132,7 @@ const Waitlist: React.FC = () => {
               />
               <Button
                 type="submit"
-                className="w-full"
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold"
                 disabled={mutation.isPending}
               >
                 {mutation.isPending ? "Submitting..." : "Join Waitlist"}
@@ -140,7 +140,7 @@ const Waitlist: React.FC = () => {
             </form>
           </Form>
 
-          <div className="mt-6 text-center">
+          {/* <div className="mt-6 text-center">
             <Button
               variant="link"
               className="text-primary hover:text-blue-700 text-sm font-medium"
@@ -148,7 +148,7 @@ const Waitlist: React.FC = () => {
             >
               ← Back to influencer selection
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
