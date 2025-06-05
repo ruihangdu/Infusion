@@ -73,11 +73,14 @@ app.use("/images", express.static(path.join(__dirname, "../client/src/images"), 
   // ALWAYS serve the app on port 5000
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
+  // Determine host based on environment
+  const isLocal = process.env.NODE_ENV !== "production";
+  const host = isLocal ? "127.0.0.1" : "0.0.0.0";
   const port = 5000;
   server.listen({
     port,
-    host: "127.0.0.1",
+    host,
   }, () => {
-    log(`serving on port ${port}`);
+    log(`serving on port ${port} (host: ${host})`);
   });
 })();
